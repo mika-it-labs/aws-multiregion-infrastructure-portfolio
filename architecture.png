@@ -1,0 +1,33 @@
+                    Internet
+                       │
+                       ▼
+              Application Load Balancer
+                       │
+              ┌────────▼────────┐
+              │   Osaka VPC     │
+              │ 10.10.0.0/16    │
+              │                 │
+              │ Web EC2         │
+              │ Docker/Node.js  │
+              │      │          │
+              │      ▼          │
+              │ API EC2 ───► S3 │
+              │      │          │
+              └──────┼──────────┘
+                     │
+                VPC Peering
+                     │
+                     ▼
+               Tokyo VPC
+               10.0.0.0/24
+                     │
+                     ▼
+             Minutes Analytics
+
+Employee PC ─► OpenVPN ─► VPN EC2 ─► Private Resources
+
+Admin ─► SSM ─► VPC Endpoints ─► EC2
+
+S3 ─► Lambda
+EventBridge Scheduler ─► Lambda
+CloudTrail ─► CloudWatch
