@@ -122,7 +122,7 @@ This demonstrates an audit and monitoring workflow. It does not claim production
 
 The live environment was built with the AWS Console and CLI before the Terraform configuration was written.
 
-Terraform configuration covers major resources such as VPCs, subnets, route tables, security groups, VPC endpoints, the ALB and target group, S3, ECR and VPC peering. Configuration files also exist for EC2, Lambda and EventBridge Scheduler. These definitions should not be treated as proof of a fully reproducible deployment.
+Terraform configuration covers major resources such as VPCs, subnets, route tables, security groups, VPC endpoints, the ALB and target group, S3, ECR and VPC peering. These definitions should not be treated as proof of a fully reproducible deployment. EC2, Lambda and EventBridge Scheduler were built and tested using the AWS Console and CLI; their Terraform resource definitions are not included in the published configuration.
 
 | Activity | Demonstrated scope |
 |---|---|
@@ -137,7 +137,7 @@ Terraform configuration covers major resources such as VPCs, subnets, route tabl
 
 `terraform validate` checks configuration validity; it does not prove that an apply will succeed or that the configuration matches deployed resources. These validation results describe the original project work and were not rerun for this English documentation update.
 
-The locally inspected `terraform/imports.tf` is currently empty. It does not contain executable import mappings. Import planning therefore remains a design activity rather than a completed migration.
+Import planning remains a design activity rather than a completed migration. Executable import mappings are not included in the published configuration.
 
 Next steps are to document resource-to-address mappings, review an import plan, perform controlled imports and inspect the resulting plan for unintended changes. A separate future project will demonstrate provisioning from scratch.
 
@@ -150,7 +150,7 @@ Stopping EC2 does not eliminate all costs: EBS volumes, ALBs, interface endpoint
 ## Repository Guide
 
 ```text
-aws-multiregion-portfolio/
+aws-multiregion-infrastructure-portfolio/
 ├── README.md
 ├── .gitignore
 ├── diagrams/
@@ -158,14 +158,9 @@ aws-multiregion-portfolio/
 └── terraform/
     ├── .terraform.lock.hcl
     ├── alb.tf
-    ├── ec2.tf
     ├── ecr.tf
     ├── endpoints.tf
-    ├── eventbridge.tf
-    ├── imports.tf
-    ├── lambda.tf
     ├── network.tf
-    ├── outputs.tf
     ├── peering.tf
     ├── providers.tf
     ├── s3.tf
